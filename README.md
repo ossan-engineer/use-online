@@ -1,6 +1,6 @@
 # use-online
 
-> This is a custom hook that subscribes the browser&#x27;s connection status.
+> React hook for subscribing the browser&#x27;s connection status.
 
 [![NPM](https://img.shields.io/npm/v/use-online.svg)](https://www.npmjs.com/package/use-online) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
