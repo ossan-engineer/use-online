@@ -7,24 +7,20 @@
 ## Install
 
 ```bash
-npm install --save use-online
+yarn add use-online
 ```
 
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import React from 'react';
 
-import { useMyHook } from 'use-online'
+import { useOnline } from 'use-online';
 
 const Example = () => {
-  const example = useMyHook()
-  return (
-    <div>
-      {example}
-    </div>
-  )
-}
+  const isOnline = useOnline();
+  return <div>{isOnline ? 'ONLINE' : 'OFFLINE'}</div>;
+};
 ```
 
 ## License
