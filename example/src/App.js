@@ -1,13 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import { useMyHook } from 'use-online'
+import { useOnline } from 'use-online';
 
 const App = () => {
-  const example = useMyHook()
-  return (
-    <div>
-      {example}
-    </div>
-  )
-}
-export default App
+  const isOnline = useOnline();
+  return <div>{isOnline ? 'ONLINE' : 'OFFLINE'}</div>;
+};
+export default App;

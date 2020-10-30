@@ -1,29 +1,16 @@
-import { useMyHook } from './'
-import { renderHook, act } from "@testing-library/react-hooks";
+import { useOnline } from './';
+import { renderHook } from '@testing-library/react-hooks';
 
-// mock timer using jest
-jest.useFakeTimers();
+describe('useOnline', () => {
+  it('should return false when online status is false', () => {
+    jest.spyOn(navigator, 'onLine', 'get').mockReturnValueOnce(false);
+    const { result } = renderHook(() => useOnline());
+    expect(result.current).toBe(false);
+  });
 
-describe('useMyHook', () => {
-  it('updates every second', () => {
-    const { result } = renderHook(() => useMyHook());
-
-    expect(result.current).toBe(0);
-
-    // Fast-forward 1sec
-    act(() => {
-      jest.advanceTimersByTime(1000);
-    });
-
-    // Check after total 1 sec
-    expect(result.current).toBe(1);
-
-    // Fast-forward 1 more sec
-    act(() => {
-      jest.advanceTimersByTime(1000);
-    });
-
-    // Check after total 2 sec
-    expect(result.current).toBe(2);
-  })
-})
+  it('should return true when online status is true', () => {
+    jest.spyOn(navigator, 'onLine', 'get').mockReturnValueOnce(true);
+    const { result } = renderHook(() => useOnline());
+    expect(result.current).toBe(true);
+  });
+});

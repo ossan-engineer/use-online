@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-export const useMyHook = () => {
-  let [{ counter }, setState] = React.useState<{
-    counter: number;
-  }>({
-    counter: 0,
-  });
+export const useOnline = () => {
+  const [isOnline, setIsOnline] = useState(navigator.onLine);
 
-  React.useEffect(() => {
-    let interval = window.setInterval(() => {
-      counter++;
-      setState({ counter });
-    }, 1000);
+  const handleOnLiine = () => setIsOnline(true);
+  const handleOffLine = () => setIsOnline(false);
+
+  useEffect(() => {
+    window.addEventListener('online', handleOnLiine);
+    window.addEventListener('offline', handleOffLine);
+
     return () => {
-      window.clearInterval(interval);
+      window.removeEventListener('online', handleOnLiine);
+      window.removeEventListener('offline', handleOffLine);
     };
   }, []);
 
-  return counter;
+  return isOnline;
 };
