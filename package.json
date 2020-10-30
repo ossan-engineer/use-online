@@ -1,5 +1,5 @@
 {
-  "name": "use-online",
+  "name": "@ossan-engineer/use-online",
   "version": "1.0.0",
   "description": "This is a custom hook that subscribes the browser&#x27;s connection status.",
   "author": "ossan-engineer",
